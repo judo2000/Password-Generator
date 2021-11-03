@@ -13,7 +13,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-let myArr = [];
+let typeArr = [];
 generateBtn.addEventListener("click", writePassword);
 var generatePassword = function() { 
   
@@ -22,15 +22,15 @@ var generatePassword = function() {
     
     const userSpecialChars = confirm("Would you like to use special characters? ($$*%_ etc)");
     if (userSpecialChars === true) {
-      myArr.push("specialChars");
+      typeArr.push("specialChars");
     }
     const useUpperCase = confirm("Would you like to include uppercase letters?");
     if (useUpperCase === true) {
-      myArr.push("upperCase");
+      typeArr.push("upperCase");
     }
     const useNumbers = confirm("Would you like to use numbers?");
     if (useNumbers === true) {
-      myArr.push("numbers");
+      typeArr.push("numbers");
     }
     
     const random = Math.floor(Math.random() * myArr.length);
@@ -39,10 +39,10 @@ var generatePassword = function() {
     for (i = 1; i <= numChars; i++) {
       const random = Math.floor(Math.random() * myArr.length);
       //console.log(myArr[random]);
-      if (myArr[random] === "numbers") {
+      if (typeArr[random] === "numbers") {
         myRandNum = randomNum(9);
         console.log(myRandNum);
-      } else if (myArr[random] === "upperCase") {
+      } else if (typeArr[random] === "upperCase") {
        myRandUpperCase = randomLetter().toUpperCase;
         console.log(myRandUpperCase);
       }
@@ -52,3 +52,13 @@ var generatePassword = function() {
   }
   return;
 };
+
+function randomNum(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function randomLetter() {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  return alphabet[Math.floor(Math.random() * alphabet.length)];
+}
