@@ -7,12 +7,9 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 let typeArr = [];
 generateBtn.addEventListener("click", writePassword);
 var generatePassword = function() { 
@@ -27,7 +24,7 @@ var generatePassword = function() {
     if (useUpperCase === true) {
       typeArr.push("upperCase");
     }
-    const userSpecialChars = confirm("Would you like to use special characters? ($$*%_ etc)");
+    const userSpecialChars = confirm("Would you like to use special characters? (!@#$%&*_-)");
     if (userSpecialChars === true) {
       typeArr.push("specialChars");
     }
@@ -36,32 +33,37 @@ var generatePassword = function() {
       typeArr.push("numbers");
     }
     
-    //const random = Math.floor(Math.random() * myArr.length);
-    //console.log(random, myArr[random]);
-    
+    let password = '';
     for (i = 1; i <= numChars; i++) {
       const random = Math.floor(Math.random() * typeArr.length);
-      //console.log(myArr[random]);
       if (typeArr[random] === "numbers") {
         myRandNum = randomNum(9);
         console.log(myRandNum);
+        password += myRandNum;
+        console.log("password" + password);
+        //console.log("password = ", password);
       } else if (typeArr[random] === "upperCase") {
        randLetter = randomLetter();
        myRandUpperCase = randLetter.toUpperCase();
-        console.log(myRandUpperCase);
+        //console.log(myRandUpperCase);
+        password += myRandUpperCase;
       } else if (typeArr[random] === "lowerCase") {
         myRandLowerCase = randomLetter();
-         console.log(myRandLowerCase);
+         //console.log(myRandLowerCase);
+         password += myRandLowerCase;
        } else if (typeArr[random] === "specialChars") {
         myRandSpecialChars = randomSpecailChars();
          console.log(myRandSpecialChars);
+         password += myRandSpecialChars;
+         console.log("password" + password);
        }
-       //return password;
+       passwordText = password;
+      
     }
+    return passwordText;
   } else {
-    generatePassword();
+    alert("You must enter a number between 8 and 128.");
   }
-  return;
 };
 
 function randomNum(max) {
@@ -70,12 +72,10 @@ function randomNum(max) {
 
 function randomLetter() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-
   return alphabet[Math.floor(Math.random() * alphabet.length)];
 }
 
 function randomSpecailChars() {
   const specialChars = "!@#$%&*_-";
-
   return specialChars[Math.floor(Math.random() * specialChars.length)];
 }
