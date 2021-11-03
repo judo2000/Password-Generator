@@ -14,7 +14,7 @@ let typeArr = [];
 generateBtn.addEventListener("click", writePassword);
 var generatePassword = function() { 
   
-  const numChars = prompt("How many characters (8-126)");
+  const numChars = prompt("How many characters (8-128)");
   if (!isNaN(numChars) && numChars >= 8 && numChars < 129) {
     const useLowerCase = confirm("Would you like to include lowercase letters?");
     if (useLowerCase === true) {
