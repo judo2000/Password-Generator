@@ -10,12 +10,21 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-let typeArr = [];
 generateBtn.addEventListener("click", writePassword);
+
+// initialize typeArr to store character types selected by the user 
+let typeArr = [];
+
+// function to generate the password
 var generatePassword = function() { 
   
+  // prompt user for number of characters to use and store answer as numChars
   const numChars = prompt("How many characters (8-128)");
+  
+  // check to see if the user input is a number between 8 and 128 characters
   if (!isNaN(numChars) && numChars >= 8 && numChars < 129) {
+    // Ask the users to confirm using lowercase letters, uppercase letters, special characters 
+    // and numbers.  All confirmed types are stored in the typeArr array
     const useLowerCase = confirm("Would you like to include lowercase letters?");
     if (useLowerCase === true) {
       typeArr.push("lowerCase");
@@ -33,48 +42,59 @@ var generatePassword = function() {
       typeArr.push("numbers");
     }
     
+    // initialize password string that will be created and passed to writePassword function
     let password = '';
+    // for loop to iterate numChar times
     for (i = 1; i <= numChars; i++) {
+      // create random method to pull random type from typeArr on each iteration of for loop
       const random = Math.floor(Math.random() * typeArr.length);
       if (typeArr[random] === "numbers") {
+        // if random type is numbers get a random number between 0 and 9
         myRandNum = randomNum(9);
-        console.log(myRandNum);
+        // Add randomly generated number to password string
         password += myRandNum;
-        console.log("password" + password);
-        //console.log("password = ", password);
       } else if (typeArr[random] === "upperCase") {
+        // if random type is upperCase call randomLetter function
        randLetter = randomLetter();
+       // call toUpperCase method to convert random letter to an uppercase letter
        myRandUpperCase = randLetter.toUpperCase();
-        //console.log(myRandUpperCase);
+        //add randomly generated uppercase letter to password string
         password += myRandUpperCase;
       } else if (typeArr[random] === "lowerCase") {
+        // if random type is lowerCase call randomLetter function
         myRandLowerCase = randomLetter();
-         //console.log(myRandLowerCase);
+         //add randomly generated lowercase letter to password string
          password += myRandLowerCase;
        } else if (typeArr[random] === "specialChars") {
+         // if random type is specialChars call randomSpecialChars function
         myRandSpecialChars = randomSpecailChars();
-         console.log(myRandSpecialChars);
+         //add randomly generated lowercase letter to password string
          password += myRandSpecialChars;
-         console.log("password" + password);
        }
+       //set passwordText to password
        passwordText = password;
       
     }
+    // return passwordText to writePassword function to be written to textarea
     return passwordText;
   } else {
+    // If the user enters anything but a number between 8 and 128 alert with a message
     alert("You must enter a number between 8 and 128.");
   }
 };
 
+// function to generate a random num with a max of 9
 function randomNum(max) {
   return Math.floor(Math.random() * max);
 }
 
+// function to generate a random letter
 function randomLetter() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   return alphabet[Math.floor(Math.random() * alphabet.length)];
 }
 
+// function to generate a random special character
 function randomSpecailChars() {
   const specialChars = "!@#$%&*_-";
   return specialChars[Math.floor(Math.random() * specialChars.length)];
