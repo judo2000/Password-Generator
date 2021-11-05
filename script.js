@@ -117,9 +117,7 @@ function copyToClipboard() {
    /* Copy the text inside the text field */
    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
     window.navigator.clipboard.writeText(copyText.value);
-    alert("localhost");
   } else {
-    alert("github");
     window.navigator.clipboard.writeText(copyText.value);
   }
 
