@@ -1,5 +1,10 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
+
+//target copy button
+let $copy = document.getElementById("copy");
+//add event listener for copy button and call copy to clipboard function
+$copy.addEventListener("click", copyToClipboard);
 
 // Write password to the #password input
 function writePassword() {
@@ -100,7 +105,8 @@ function randomSpecailChars() {
   return specialChars[Math.floor(Math.random() * specialChars.length)];
 }
 
-function myFunction() {
+// copy password to clipboard function
+function copyToClipboard() {
   /* Get the text field */
   var copyText = document.getElementById("password");
 
