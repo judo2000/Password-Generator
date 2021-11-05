@@ -120,7 +120,7 @@ function copyToClipboard() {
     alert("localhost");
   } else {
     alert("github");
-    document.body.navigator.clipboard.writeText(copyText.value);
+    window.navigator.clipboard.writeText(copyText.value);
   }
 
   /* Alert the copied text */
