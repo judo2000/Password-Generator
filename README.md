@@ -20,7 +20,24 @@ I found the function for alpabet at [Coderrocketfuel.com](https://www.coderrocke
 
 I got the random function from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
 
-I got the idea from my classmate, Matthew Brignola to add a copy to clipboard function so I found a copy text to clipboard function at [W3Schools](https://www.w3schools.com/howto/howto_js_copy_clipboard.asp).  I edited it to use a copy button that I found at [Icons3.com](https://icons8.com/icons/set/copy-text).
+I got the idea from my classmate, Matthew Brignola to add a copy to clipboard function so I found a copy text to clipboard function at [W3Schools](https://www.w3schools.com/howto/howto_js_copy_clipboard.asp).  I edited it to use a copy button that I found at [Icons3.com](https://icons8.com/icons/set/copy-text). 
+
+I also found that the function would only work on my local server with 
+```
+navigator.clipboard.writeText(copyText.value);
+```
+and on git hub with 
+```
+document.body.navigator.clipboard.writeText(copyText.value);
+```
+so I found an way to check using an if statment:
+```
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+    navigator.clipboard.writeText(copyText.value);
+  } else {
+    document.body.navigator.clipboard.writeText(copyText.value);
+  }
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
