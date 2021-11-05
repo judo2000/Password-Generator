@@ -42,8 +42,8 @@ var generatePassword = function() {
       typeArr.push("numbers");
     }
     
-    // initialize password string that will be created and passed to writePassword function
-    let password = '';
+    // initialize passwordText string that will be created and passed to writePassword function
+    let passwordText = '';
     // for loop to iterate numChar times
     for (i = 1; i <= numChars; i++) {
       // create random method to pull random type from typeArr on each iteration of for loop
@@ -52,27 +52,27 @@ var generatePassword = function() {
         // if random type is numbers get a random number between 0 and 9
         myRandNum = randomNum(9);
         // Add randomly generated number to password string
-        password += myRandNum;
+        passwordText += myRandNum;
       } else if (typeArr[random] === "upperCase") {
         // if random type is upperCase call randomLetter function
        randLetter = randomLetter();
        // call toUpperCase method to convert random letter to an uppercase letter
        myRandUpperCase = randLetter.toUpperCase();
         //add randomly generated uppercase letter to password string
-        password += myRandUpperCase;
+        passwordText += myRandUpperCase;
       } else if (typeArr[random] === "lowerCase") {
         // if random type is lowerCase call randomLetter function
         myRandLowerCase = randomLetter();
          //add randomly generated lowercase letter to password string
-         password += myRandLowerCase;
+         passwordText += myRandLowerCase;
        } else if (typeArr[random] === "specialChars") {
          // if random type is specialChars call randomSpecialChars function
         myRandSpecialChars = randomSpecailChars();
          //add randomly generated lowercase letter to password string
-         password += myRandSpecialChars;
+         passwordText += myRandSpecialChars;
        }
        //set passwordText to password
-       passwordText = password;
+       //passwordText = password;
       
     }
     // return passwordText to writePassword function to be written to textarea
