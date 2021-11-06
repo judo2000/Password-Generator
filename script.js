@@ -115,12 +115,6 @@ function copyToClipboard() {
   copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
    /* Copy the text inside the text field */
-   if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-    window.navigator.clipboard.writeText(copyText.value);
-  } else {
-    window.navigator.clipboard.writeText(copyText.value);
-  }
+   window.navigator.clipboard.writeText(copyText.value);
 
-  /* Alert the copied text */
-  //alert("Copied the text: " + copyText.value);
 }
